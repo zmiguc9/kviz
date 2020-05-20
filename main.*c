@@ -1,0 +1,69 @@
+int tipkaA = 8;
+int tipkaB = 9;
+int tipkaC = 10;
+int tipkaR = 12;
+
+int buA = 0;
+int buB = 0;
+int buC = 0;
+int buR = 0;
+
+int led1 = 4;
+int led2 = 3;
+int led3 = 2;
+
+int hold = 0;
+
+void setup() {
+
+  pinMode(tipkaA, INPUT_PULLUP);
+  pinMode(tipkaB, INPUT_PULLUP);
+  pinMode(tipkaC, INPUT_PULLUP);
+  pinMode(tipkaR, INPUT_PULLUP);
+ 
+  pinMode(led1, OUTPUT);
+  pinMode(led2, OUTPUT);
+  pinMode(led3, OUTPUT);
+
+  delay(1000);
+}
+
+void loop() {
+ 
+  if(hold == 0){
+    buA = digitalRead(tipkaA);
+    buB = digitalRead(tipkaB);
+    buC = digitalRead(tipkaC);
+    buR = digitalRead(tipkaR);
+
+
+    //tipka 1
+    if(buA == 0){
+      digitalWrite(led1, HIGH);
+      hold = 1;
+
+    }
+    //tipka 2
+    if(buB == 0){
+      digitalWrite(led1, HIGH);
+      digitalWrite(led2, HIGH);
+      hold = 1;
+ 
+    }
+    //tipka 3
+    if(buC == 0){
+      digitalWrite(led1, HIGH);
+      digitalWrite(led2, HIGH);
+      digitalWrite(led3, HIGH);
+      hold = 1;
+
+    }
+    // reset tipka
+    if(buR == 0){
+      digitalWrite(led1, LOW);
+      digitalWrite(led2, LOW);
+      digitalWrite(led3, LOW);
+      hold = 0;
+    }
+  }
+  }
